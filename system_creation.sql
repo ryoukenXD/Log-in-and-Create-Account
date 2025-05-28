@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS system_creation;
+
+USE system_creation;
+
+CREATE TABLE IF NOT EXISTS accounts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    contact VARCHAR(100) NOT NULL,
+    password VARCHAR(128) NOT NULL,
+    email varchar(100) NOT NULL
+);
+
+
+ALTER TABLE accounts
+ADD COLUMN is_active BOOLEAN NOT NULL DEFAULT TRUE,
+ADD COLUMN is_staff BOOLEAN NOT NULL DEFAULT FALSE,
+ADD COLUMN last_login DATETIME NULL,
+ADD COLUMN is_superuser BOOLEAN NOT NULL DEFAULT FALSE;
+
+DESCRIBE accounts;
+
